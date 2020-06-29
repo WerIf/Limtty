@@ -1,0 +1,3 @@
+rootProject.name='Limtty'
+include ':app'
+include ':limlib'

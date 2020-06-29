@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <!--Edittext 输入-->
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#fff</color>
+
+    <color name="google_red">#EA4335</color>
+    <color name="google_yellow">#FBBC05</color>
+    <color name="google_blue">#4285F4</color>
+    <color name="google_green">#34A853</color>
+
+    <color name="theme_color">#5696FC</color>
+    <color name="textPrimary">#4e5864</color>
+    <color name="skin">#F5F5F5</color>
+    <color name="bubble">#C7BECCE7</color>
+</resources>

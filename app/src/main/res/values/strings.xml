@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Limtty</string>
+    <string name="loginTitle">登录</string>
+    <string name="user_name">用户名</string>
+    <string name="user_psd">密码</string>
+    <string name="login">登录</string>
+    <string name="hint_password">请输入登录密码哦!</string>
+    <string name="page_title">首页</string>
+    <string name="beKeenOn_title">喜悦</string>
+    <string name="private_title">个人</string>
+</resources>
