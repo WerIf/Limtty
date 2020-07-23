@@ -1,4 +1,4 @@
-package com.lily.limtty.page.home.view
+package com.lily.limtty.page.home
 
 import androidx.databinding.ViewDataBinding
 import com.lily.limtty.R
@@ -9,10 +9,11 @@ import com.lily.limtty.R
  * PackageName com.lily.limtty.page.home.view
  *
  */
-class ShareView<T:ViewDataBinding> private constructor():LBaseView<T>() {
+class ShareView<T:ViewDataBinding> private constructor():
+    LBaseView<T>() {
     companion object {
-        fun <T:ViewDataBinding> instance():ShareView<T>{
-            var info=ShareView<T>()
+        fun <T:ViewDataBinding> instance(): ShareView<T> {
+            var info= ShareView<T>()
             return info
         }
     }

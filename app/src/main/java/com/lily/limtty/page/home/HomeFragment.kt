@@ -1,7 +1,7 @@
 package com.lily.limtty.page.home
 
 import android.view.View
-import androidx.core.view.get
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.lily.limlib.root.LRootFragment
 import com.lily.limlib.root.LVPagerAdapter
@@ -10,9 +10,9 @@ import com.lily.limtty.databinding.FragmentHomeBinding
 import com.lily.limtty.databinding.LayoutCollectViewBinding
 import com.lily.limtty.databinding.LayoutPageViewBinding
 import com.lily.limtty.databinding.LayoutShareViewBinding
-import com.lily.limtty.page.home.view.CollectionView
-import com.lily.limtty.page.home.view.PageView
-import com.lily.limtty.page.home.view.ShareView
+import com.lily.limtty.page.home.picture.PictureView
+import com.lily.limtty.page.home.picture.PictureViewModel
+import com.lily.limtty.util.InjectorUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -25,6 +25,10 @@ class HomeFragment:LRootFragment<FragmentHomeBinding>() {
 
     private var viewList= mutableListOf<View>()
 
+    val pictureModel by lazy {
+        ViewModelProvider(this,InjectorUtil.getPictureCategoryModelFactory()).get(PictureViewModel::class.java)
+    }
+
     override fun getContentId(): Int = R.layout.fragment_home
 
     override fun initOperation() {
@@ -34,7 +38,8 @@ class HomeFragment:LRootFragment<FragmentHomeBinding>() {
 
     override fun initL() {
 
-        var pageBinding=PageView.instance<LayoutPageViewBinding>().createBinding(requireContext())
+        var pageBinding=
+            PictureView.instance<LayoutPageViewBinding>().createBinding(requireContext())
         var collectBinding= CollectionView.instance<LayoutCollectViewBinding>().createBinding(requireContext())
         var shareBinding= ShareView.instance<LayoutShareViewBinding>().createBinding(requireContext())
 
@@ -44,6 +49,12 @@ class HomeFragment:LRootFragment<FragmentHomeBinding>() {
 
         //加载页面
         initPage()
+
+        pageBinding.categoryModel=pictureModel
+        pageBinding.resId=R.color.colorPrimary
+        binding.lifecycleOwner=this
+        //加载数据
+        pictureModel.getCategory()
     }
 
     override fun initE() {
@@ -62,7 +73,6 @@ class HomeFragment:LRootFragment<FragmentHomeBinding>() {
             }
 
             override fun onPageSelected(position: Int) {
-//                homeRootBottom.menu.getItem(position).isChecked=true
                 when(position){
                     0->{
                         homeRootBottom.selectedItemId=R.id.windmill

@@ -1,4 +1,4 @@
-package com.lily.limtty.page.home.view
+package com.lily.limtty.page.home
 
 import android.content.Context
 import android.view.LayoutInflater
