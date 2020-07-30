@@ -12,16 +12,23 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  */
 object ServiceCreator {
-    private const val BASE_URL="http://service.picasso.adesk.com"
+    private const val BASE_PICTURE="http://service.picasso.adesk.com"
+    private const val BASE_COMIC="https://gateway.marvel.com"
 
-//    private val httpClient=OkHttpClient.Builder()
 
-    private val builder=Retrofit.Builder()
-        .baseUrl(BASE_URL)
+    private val pictureBuilder=Retrofit.Builder()
+        .baseUrl(BASE_PICTURE)
         .client(LHttpInterceptor.DEFAULT)
         .addConverterFactory(GsonConverterFactory.create())
 
-    private val retrofit= builder.build()
+    private val comicBuilder=Retrofit.Builder()
+        .baseUrl(BASE_COMIC)
+        .client(LHttpInterceptor.DEFAULT)
+        .addConverterFactory(GsonConverterFactory.create())
 
-    fun <T> create(serviceClass:Class<T>):T= retrofit.create(serviceClass)
+    private val pictureRetrofit= pictureBuilder.build()
+    private val comicRetrofit= comicBuilder.build()
+
+    fun <T> createPicture(serviceClass:Class<T>):T= pictureRetrofit.create(serviceClass)
+    fun <T> createComic(serviceClass:Class<T>):T= comicRetrofit.create(serviceClass)
 }

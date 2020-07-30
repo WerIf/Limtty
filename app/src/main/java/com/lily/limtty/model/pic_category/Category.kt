@@ -1,21 +1,20 @@
-package com.lily.limtty.model.classify
+package com.lily.limtty.model.pic_category
 
-import android.view.View
-import androidx.room.ColumnInfo
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
 data class Category(
-    @PrimaryKey(autoGenerate = true) val cid:Int=0,
+    @NonNull
+    @PrimaryKey
+    val id: String,
     val atime: Double,
     val count: Int,
     val cover: String,
     val cover_temp: String,
     val ename: String,
     val icover: String,
-    @ColumnInfo(name = "ctId")
-    val id: String,
     val name: String,
     val picasso_cover: String,
     val rank: Int,

@@ -6,7 +6,7 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="categoryModel"
+            name="viewModel"
             type="com.lily.limtty.page.home.picture.PictureViewModel" />
 
         <variable
@@ -19,12 +19,19 @@
         android:layout_height="match_parent">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            bind:onRefreshListener="@{()->categoryModel.refreshCategory()}"
-            bind:refreshing="@{categoryModel.refreshing}"
+            bind:onRefreshListener="@{()->viewModel.refreshCategory()}"
+            bind:refreshing="@{viewModel.refreshing}"
             bind:colorSchemeResources="@{resId}"
             >
+<!--            bind:refreshing="@{viewModel.refreshing}"-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

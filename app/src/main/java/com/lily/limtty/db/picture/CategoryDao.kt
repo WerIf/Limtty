@@ -1,7 +1,7 @@
 package com.lily.limtty.db.picture
 
 import androidx.room.*
-import com.lily.limtty.model.classify.Category
+import com.lily.limtty.model.pic_category.Category
 
 /**
  * Created by Werif
@@ -14,11 +14,8 @@ interface CategoryDao {
     @Insert
     fun insert(category:Category)
 
-    @Delete
-    fun deleteAll(category:ArrayList<Category>):Int
-
     @Update
-    fun update(category:Category):Int
+    fun update(vararg category: Category):Int
 
     @Query("SELECT * FROM CATEGORY")
     fun findCategoryById():List<Category>?

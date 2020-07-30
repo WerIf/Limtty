@@ -1,7 +1,8 @@
-package com.lily.limtty.page.home
+package com.lily.limtty.page.home.comic
 
 import androidx.databinding.ViewDataBinding
 import com.lily.limtty.R
+import com.lily.limtty.page.home.LBaseView
 
 /**
  * Created by Werif
@@ -9,11 +10,11 @@ import com.lily.limtty.R
  * PackageName com.lily.limtty.page.home.view
  *
  */
- class CollectionView<T:ViewDataBinding> private constructor() :
+ class ComicView<T:ViewDataBinding> private constructor() :
     LBaseView<T>(){
     companion object Instance{
-        fun<T:ViewDataBinding> instance(): CollectionView<T> {
-            var info= CollectionView<T>()
+        fun<T:ViewDataBinding> instance(): ComicView<T> {
+            var info= ComicView<T>()
             return info
         }
     }

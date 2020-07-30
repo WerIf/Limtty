@@ -2,7 +2,7 @@ package com.lily.limtty.db.picture
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.lily.limtty.model.classify.Category
+import com.lily.limtty.model.pic_category.Category
 
 /**
  * Created by Werif

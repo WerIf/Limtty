@@ -1,9 +1,8 @@
-package com.lily.limtty.repository
+package com.lily.limtty.repository.picture
 
-import android.util.Log
 import com.lily.limtty.LogTool
 import com.lily.limtty.db.picture.CategoryDao
-import com.lily.limtty.model.classify.Category
+import com.lily.limtty.model.pic_category.Category
 import com.lily.limtty.net.LyNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,21 +29,25 @@ class PictureCategoryRepository private constructor(private val categoryDao: Cat
     private suspend fun requestCategory()= withContext(Dispatchers.IO){
         var heCategory=network.fetchPictureClassifyList()
         val category=heCategory.res.category
-        category.forEach {
-            categoryDao.insert(it)
+        category.map {
+            categoryDao.update(it)
         }
         category
     }
 
     companion object{
 
-        private lateinit var instance:PictureCategoryRepository
+        private lateinit var instance: PictureCategoryRepository
 
-        fun getInstance(categoryDao: CategoryDao, network: LyNetwork):PictureCategoryRepository{
-            if(!::instance.isInitialized){
+        fun getInstance(categoryDao: CategoryDao, network: LyNetwork): PictureCategoryRepository {
+            if(!Companion::instance.isInitialized){
                 synchronized(PictureCategoryRepository::class){
-                    if(!::instance.isInitialized){
-                        instance=PictureCategoryRepository(categoryDao,network)
+                    if(!Companion::instance.isInitialized){
+                        instance =
+                            PictureCategoryRepository(
+                                categoryDao,
+                                network
+                            )
                     }
                 }
             }

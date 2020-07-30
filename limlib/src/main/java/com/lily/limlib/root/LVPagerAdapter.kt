@@ -17,7 +17,7 @@ class LVPagerAdapter(var lView:MutableList<View>, var lTitle:MutableList<String>
     override fun getCount(): Int =lView.size
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        super.destroyItem(container, position, `object`)
+//        super.destroyItem(container, position, `object`)
         container.removeView(lView[position])
     }
 
@@ -27,7 +27,6 @@ class LVPagerAdapter(var lView:MutableList<View>, var lTitle:MutableList<String>
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-
         if(!lTitle.isNullOrEmpty()){
             return lTitle!![position]
         }

@@ -2,7 +2,7 @@ package com.lily.limtty.page.home.picture
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.lily.limtty.repository.PictureCategoryRepository
+import com.lily.limtty.repository.picture.PictureCategoryRepository
 
 /**
  * Created by Werif

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detailsData"
+            type="com.lily.limtty.model.pic_details.Vertical" />
+    </data>
+
+    <com.lily.limlib.tools.AdaptiveImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        bind:loadBingPic="@{detailsData.img}"
+        tools:ignore="MissingConstraints" />
+
+</layout>

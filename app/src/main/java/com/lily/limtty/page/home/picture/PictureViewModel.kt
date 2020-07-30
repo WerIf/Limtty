@@ -8,8 +8,8 @@ import com.google.gson.Gson
 import com.lily.limtty.LApplication
 import com.lily.limtty.LogTool
 import com.lily.limtty.ToastTool
-import com.lily.limtty.model.classify.Category
-import com.lily.limtty.repository.PictureCategoryRepository
+import com.lily.limtty.model.pic_category.Category
+import com.lily.limtty.repository.picture.PictureCategoryRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -26,14 +26,15 @@ class PictureViewModel(private val repository: PictureCategoryRepository):ViewMo
     fun getCategory(){
         launch({
             categoryList.value=repository.getCategory()
-
             LogTool.v(data = Gson().toJson(categoryList.value))
+
         },{
             Toast.makeText(LApplication.context, it.message, Toast.LENGTH_SHORT).show()
         })
     }
 
     fun refreshCategory(){
+
         refreshing.value=true
         launch({
             categoryList.value=repository.refreshCategory()
